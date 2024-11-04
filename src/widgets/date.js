@@ -20,3 +20,7 @@ export function date() {
     getMinute
   }
 }
+
+export function getCity () {
+  
+}

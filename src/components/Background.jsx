@@ -6,12 +6,12 @@ import { date } from "../widgets/date";
 
 export default function Background() {
   const [time, setTime] = useState(date().getHour());
-  const [back, setBack] = useState(time >= 17 && time <= 6 ? night : day)
+  const [back, setBack] = useState(time >= 0 && time <= 6? night : day)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(date().getHour())
-      setBack(time >= 17 ? night : day)
+      setBack(time >= 0 && time <= 6? night : day)
     }, 1000)
 
     return () => clearInterval(interval);
@@ -23,4 +23,3 @@ export default function Background() {
     </video>
   )
 }
-
