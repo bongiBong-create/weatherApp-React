@@ -9,10 +9,6 @@ import "../app/styles/background.css";
 export default React.memo(function Background() {
   const [time, setTime] = useState(date().getHour());
 
-  const background = () => {
-    return time
-  }
-
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(date().getHour())
@@ -25,7 +21,7 @@ export default React.memo(function Background() {
   console.log("back")
 
   return (
-    <video autoPlay muted loop className="background" key={night}>
+    <video autoPlay muted loop playsInline className="background" key={night}>
       <source src={night} type="video/mp4" />
     </video>
   )
