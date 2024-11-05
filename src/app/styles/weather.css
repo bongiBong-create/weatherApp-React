@@ -83,3 +83,9 @@
   height: 170px;
   scrollbar-width: none;
 }
+
+@media (max-width:420px) {
+  .weather {
+    width: 95%;
+  }
+}
