@@ -1,25 +1,32 @@
-import { useEffect, useState } from "react";
-import "../app/styles/background.css";
-import night from "../app/video/night.mp4";
-import day from "../app/video/waterFall.mp4";
+import React, { useEffect, useState, useMemo } from "react";
 import { date } from "../widgets/date";
 
-export default function Background() {
+import night from "../app/video/night.mp4";
+import day from "../app/video/waterFall.mp4";
+
+import "../app/styles/background.css";
+
+export default React.memo(function Background() {
   const [time, setTime] = useState(date().getHour());
-  const [back, setBack] = useState(time >= 0 && time <= 6? night : day)
+
+  const background = () => {
+    return time
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(date().getHour())
-      setBack(time >= 0 && time <= 6? night : day)
-    }, 1000)
+      setBack(time >= 0 && time <= 6 ? night : day)
+    }, 3600000)
 
     return () => clearInterval(interval);
   }, [])
 
+  console.log("back")
+
   return (
-    <video autoPlay muted loop className="background" key={back}>
-      <source src={back} type="video/mp4" />
+    <video autoPlay muted loop className="background" key={night}>
+      <source src={night} type="video/mp4" />
     </video>
   )
-}
+})
